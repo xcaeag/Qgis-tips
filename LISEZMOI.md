@@ -1,4 +1,4 @@
-# Qgis-tips :fr:
+# Qgis-tips
 
 [english version](README.md)
 

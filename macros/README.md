@@ -1,4 +1,4 @@
-## Project Macros for specific toolbar :gb:
+## Project Macros for specific toolbar
 
 [french version](LISEZMOI.md)
 

@@ -1,4 +1,4 @@
-## Les macros de projet pour une barre d'outil dédiée au projet :fr:
+## Les macros de projet pour une barre d'outil dédiée au projet
 
 [english version](README.md)
 

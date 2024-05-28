@@ -1,4 +1,4 @@
-# Qgis-tips :gb:
+# Qgis-tips
 
 [french version](LISEZMOI.md)
 
