@@ -1,6 +1,6 @@
 # Qgis-tips
 
-[french version](LISEZMOI.md)
+[french version](LISEZMOI.md) - [this page on github.io](https://xcaeag.github.io/Qgis-tips/)
 
 ## Project Macros for specific toolbar
 

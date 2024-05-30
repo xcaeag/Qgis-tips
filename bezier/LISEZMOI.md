@@ -14,7 +14,7 @@ A quoi ça sert ? Jouer avec les expressions, et dans mon cas : produire une cou
 
 Code à placer dans un nouveau fichier de fonctions, dans l'éditeur de fonction de la fenêtre de construction des expressions.
 
-Les algos ont été trouvés là, je n'ai rien inventé : https://codereview.stackexchange.com/questions/240710/pure-python-b%C3%A9zier-curve-implementation
+Les algos ont été trouvés là, je n'ai rien inventé : [https://codereview.stackexchange.com/questions/240710/pure-python-b%C3%A9zier-curve-implementation](https://codereview.stackexchange.com/questions/240710/pure-python-b%C3%A9zier-curve-implementation)
 
 C'est la fonction `bezierFromLine` qui sera utilisée dans nos expressions. ([resources/bezier.py](resources/bezier.py))
 

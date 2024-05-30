@@ -14,7 +14,7 @@ What's the point ? Playing with expressions, and in my case: producing a curve f
 
 Code to place in a new functions file, in the function editor of the expression construction window.
 
-The algorithms were found there, I didn't invent anything: https://codereview.stackexchange.com/questions/240710/pure-python-b%C3%A9zier-curve-implementation
+The algorithms were found there, I didn't invent anything: [https://codereview.stackexchange.com/questions/240710/pure-python-b%C3%A9zier-curve-implementation](https://codereview.stackexchange.com/questions/240710/pure-python-b%C3%A9zier-curve-implementation)
 
 It is the `bezierFromLine` function which will be used in our expressions. ([resources/bezier.py](resources/bezier.py))
 

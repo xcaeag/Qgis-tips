@@ -1,6 +1,6 @@
 # Qgis-tips
 
-[english version](README.md)
+[english version](README.md) - [cette page sur github.io](https://xcaeag.github.io/Qgis-tips/)
 
 ## Les macros de projet pour une barre d'outils dédiée au projet
 
