@@ -111,8 +111,7 @@ Place one of the two expressions in place of `$geometry` in the appropriate fiel
 
 ## Files
 
-Functions : [resources/bezier.py](resources/bezier.py)
-
-style A : [resources/styleA.qml](resources/styleA.qml)
-
-style B : [resources/styleB.qml](resources/styleB.qml)
+- repo : [https://github.com/xcaeag/Qgis-tips](https://github.com/xcaeag/Qgis-tips)
+- Functions : [resources/bezier.py](resources/bezier.py)
+- style A : [resources/styleA.qml](resources/styleA.qml)
+- style B : [resources/styleB.qml](resources/styleB.qml)
