@@ -1,6 +1,6 @@
 ## Expressions + style for altitude profile
 
-[english version](README.md)
+[french version](LISEZMOI.md)
 
 The idea: propose an expression to dynamically draw an altitudinal profile.
 
