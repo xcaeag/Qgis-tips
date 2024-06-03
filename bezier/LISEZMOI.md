@@ -21,7 +21,6 @@ C'est la fonction `bezierFromLine` qui sera utilisée dans nos expressions. ([re
 ```python
 from qgis.utils import qgsfunction
 from qgis.core import QgsPointXY, QgsGeometry
-import math
 import numpy as np
 
 
@@ -29,6 +28,7 @@ def bezierPoint(ctrlPoints, t):
     while len(ctrlPoints) > 1:
         controlLinestring = zip(ctrlPoints[:-1], ctrlPoints[1:])
         ctrlPoints = [(1 - t) * p1 + t * p2 for p1, p2 in controlLinestring]
+
     return ctrlPoints[0]
 
 def bezierCurve(ctrlPoints, npoints):
@@ -37,10 +37,11 @@ def bezierCurve(ctrlPoints, npoints):
 
 @qgsfunction(args="auto", group="Custom")
 def bezierFromLine(lineGeom, npoints, feature, parent):
-    ctrlpoints = [np.array([p.x(), p.y()]) for p in lineGeom.asPolyline()]
+    ctrlpoints = [np.array([p.x(), p.y(), p.z(), p.m()]) for p in lineGeom.vertices()]
     newPoints = bezierCurve(ctrlpoints, npoints)
-    polyLine = [QgsPointXY(p[0], p[1]) for p in newPoints]
-    newG = QgsGeometry.fromPolylineXY(polyLine)
+    polyLine = [QgsPoint(p[0], p[1], p[2], p[3]) for p in newPoints]
+    newG = QgsGeometry.fromPolyline(polyLine)
+
     return newG
 ```
 
