@@ -15,3 +15,11 @@ The idea: propose an expression to draw a Bezier curve dynamically from control 
 Details here: [Bezier](bezier/README.md)
 
 ![bezier demo](bezier/bezier2.gif)
+
+## Expressions + style for altitude profile
+
+The idea: propose an expression to dynamically draw an altitudinal profile.
+
+Details here : [Profil](profil/README.md)
+
+![Démo](profil/profil.gif)

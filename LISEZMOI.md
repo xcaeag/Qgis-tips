@@ -15,3 +15,11 @@ L'idée : proposer une expression pour dessiner une courbe de Bezier dynamiqueme
 Les détails ici : [Bezier](bezier/LISEZMOI.md)
 
 ![bezier demo](bezier/bezier2.gif)
+
+## Expressions + style pour profil d'altitude
+
+L'idée : proposer une expression pour dessiner un profil altitudinal dynamiquement.
+
+Les détails ici : [Profil](profil/LISEZMOI.md)
+
+![Démo](profil/profil.gif)

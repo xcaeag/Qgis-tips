@@ -68,7 +68,7 @@ Permet ainsi de dessiner à la façon des outils de dessin vectoriel, en maîtri
 
 Le style 'B' (sous github) met en évidence ces 'poignées', ainsi que les segments les reliants aux points d'accroche.
 
-```sql
+```pgsql
 -- Expression de générateur de géométrie linestring
 
 -- nb de points dans la ligne originale

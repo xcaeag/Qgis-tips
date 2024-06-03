@@ -67,7 +67,7 @@ Allows you to draw like vector drawing tools, by controlling the position of the
 
 Style 'B' (see github) shows these 'handles', as well as the segments connecting them to the hook points.
 
-```sql
+```pgsql
 -- Linestring geometry generator expression
 
 -- number of points in the original line
