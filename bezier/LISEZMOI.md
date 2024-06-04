@@ -20,7 +20,7 @@ C'est la fonction `bezierFromLine` qui sera utilisée dans nos expressions. ([re
 
 ```python
 from qgis.utils import qgsfunction
-from qgis.core import QgsPointXY, QgsGeometry
+from qgis.core import QgsPoint, QgsGeometry
 import numpy as np
 
 

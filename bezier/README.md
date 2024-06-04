@@ -20,7 +20,7 @@ It is the `bezierFromLine` function which will be used in our expressions. ([res
 
 ```python
 from qgis.utils import qgsfunction
-from qgis.core import QgsPointXY, QgsGeometry
+from qgis.core import QgsPoint, QgsGeometry
 import math
 import numpy as np
 
@@ -37,10 +37,10 @@ def bezierCurve(ctrlPoints, npoints):
 
 @qgsfunction(args="auto", group="Custom")
 def bezierFromLine(lineGeom, npoints, feature, parent):
-    ctrlpoints = [np.array([p.x(), p.y()]) for p in lineGeom.asPolyline()]
+    ctrlpoints = [np.array([p.x(), p.y(), p.z(), p.m()]) for p in lineGeom.vertices()]
     newPoints = bezierCurve(ctrlpoints, npoints)
-    polyLine = [QgsPointXY(p[0], p[1]) for p in newPoints]
-    newG = QgsGeometry.fromPolylineXY(polyLine)
+    polyLine = [QgsPoint(p[0], p[1], p[2], p[3]) for p in newPoints]
+    newG = QgsGeometry.fromPolyline(polyLine)
     return newG
 ```
 
