@@ -2,6 +2,11 @@
 
 [english version](README.md) - [cette page sur github.io](https://xcaeag.github.io/Qgis-tips/)
 
+[Les macros de projet](#les-macros-de-projet-pour-une-barre-doutils-dédiée-au-projet)\
+[Courbes de Bezier - expression](#fonction-expressions-styles-pour-construire-des-courbes-de-bezier)\
+[Profil d'altitude - style](#expressions--style-pour-profil-daltitude)\
+[Traveling](#script-pour-un-travelling)
+
 ## Les macros de projet pour une barre d'outils dédiée au projet
 
 L'idée : pour ne pas se lancer dans l'écriture (un peu lourde) d'un plugin, et proposer une barre d'outils propre à un projet, on utilise les "macros". Plus de détails ici : [Macros](macros/LISEZMOI.md)

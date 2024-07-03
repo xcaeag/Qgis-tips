@@ -2,6 +2,11 @@
 
 [french version](LISEZMOI.md) - [this page on github.io](https://xcaeag.github.io/Qgis-tips/)
 
+[Project macros](#project-macros-for-specific-toolbar)\
+[Bezier curves style](#function-expressions-styles-to-construct-bezier-curves)\
+[Altitude profile style](#expressions--style-for-altitude-profile)\
+[Tracking shot script](#script-for-a-tracking-shot)
+
 ## Project Macros for specific toolbar
 
 To avoid having to write a plugin (a bit complex), and to offer a toolbar specific to a project, we use "macros".  Some details here : [Macros](macros/README.md)
