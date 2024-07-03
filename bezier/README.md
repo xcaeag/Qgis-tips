@@ -1,6 +1,6 @@
 ## Function, expressions, styles to construct Bezier curves
 
-[french version](LISEZMOI.md)
+[french version](LISEZMOI.md) - [top](../README.md)
 
 The idea: propose an expression to draw a Bezier curve dynamically from control points (carried by a linestring geometry).
 

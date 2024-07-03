@@ -1,6 +1,6 @@
 ## Expressions + style pour profil d'altitude
 
-[english version](README.md)
+[english version](README.md) - [sommaire](../LISEZMOI.md)
 
 L'idée : proposer une expression pour dessiner un profil altitudinal dynamiquement.
 

@@ -1,6 +1,6 @@
 ## Les macros de projet pour une barre d'outil dédiée au projet
 
-[english version](README.md)
+[english version](README.md) - [sommaire](../LISEZMOI.md)
 
 L'idée : pour ne pas se lancer dans l'écriture (un peu lourde) d'un plugin, et proposer une barre d'outils propre à un projet, on utilise les "macros".
 

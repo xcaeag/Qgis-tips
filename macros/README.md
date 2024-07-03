@@ -1,6 +1,6 @@
 ## Project Macros for specific toolbar
 
-[french version](LISEZMOI.md)
+[french version](LISEZMOI.md) - [top](../README.md)
 
 The idea: to avoid having to write a plugin (a bit complex), and to offer a toolbar specific to a project, we use "macros".
 

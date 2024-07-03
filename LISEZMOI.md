@@ -23,3 +23,12 @@ L'idée : proposer une expression pour dessiner un profil altitudinal dynamiquem
 Les détails ici : [Profil](profil/LISEZMOI.md)
 
 ![Démo](profil/profil.gif)
+
+## Script pour un travelling
+
+En s'appuyant sur le controleur temporel, l'idée est de suivre un trajet de 'caméra' défini par une géométrie de type linestring. 
+
+Les détails ici : [Travelling](travelling/LISEZMOI.md)
+
+![ex](travelling/plantorel.gif)
+

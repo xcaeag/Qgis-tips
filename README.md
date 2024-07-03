@@ -23,3 +23,11 @@ The idea: propose an expression to dynamically draw an altitudinal profile.
 Details here : [Profil](profil/README.md)
 
 ![Démo](profil/profil.gif)
+
+## Script for a tracking shot
+
+Using the temporal controller, the idea is to follow a 'camera' path defined by a linestring geometry.
+
+Details here: [Travelling](travelling/README.md)
+
+![alt text](travelling/plantorel.gif)

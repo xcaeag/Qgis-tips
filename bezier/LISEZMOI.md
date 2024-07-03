@@ -1,6 +1,6 @@
 ## Fonction, expressions, styles pour construire des courbes de Bezier
 
-[english version](README.md)
+[english version](README.md) - [sommaire](../LISEZMOI.md)
 
 L'idée : proposer une expression pour dessiner une courbe de Bezier dynamiquement à partir de points de contrôles (portés par une géométrie de type linestring).
 
