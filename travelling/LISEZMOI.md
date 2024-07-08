@@ -10,7 +10,7 @@ Une fois 'connecté' (l'objet python) au controleur, ce bout de code va adapter 
 
 Prérequis :
 - savoir exploiter la console python, 
-- disposer d'un trajet (une couche de ligne), dont la position des noeuds vont définir les positions successives du centre de la vue, corrigés selon le nombre d'étapes du controleur temporel (de la date de départ à la date de fin, le trajet est parcouru dans son ensemble, les positions et valeurs M, Z seront interpolées).
+- disposer d'un trajet (une couche de ligne), dont les noeuds vont définir les positions successives du centre de la vue, corrigées selon le nombre d'étapes du controleur temporel (de la date de départ à la date de fin, le trajet est parcouru dans son ensemble, les positions et valeurs M, Z seront interpolées).
 
 **Exemple d'un trajet à suivre :**
 
