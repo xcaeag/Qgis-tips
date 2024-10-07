@@ -37,3 +37,11 @@ Using the temporal controller, the idea is to follow a 'camera' path defined by 
 Details here: [Travelling](travelling/README.md)
 
 ![alt text](travelling/plantorel.gif)
+
+## Prepare a DEM for Blender, well aligned with a print layout
+
+Or how to cut, rotate a raster according to the extent of a print layout, by extrapolating the extent of the map to the entire page, taking into account rotations.
+
+![alt text](layout/resources/transformation.png)
+
+here : [layout](layout/README.md)

@@ -38,3 +38,10 @@ Les détails ici : [Travelling](travelling/LISEZMOI.md)
 
 ![ex](travelling/plantorel.gif)
 
+## Préparer un MNT pour Blender, bien ajusté sur une mise en page
+
+Ou comment découper, pivoter un raster selon l'emprise d'une mise en page, extrapolant l'étendue du MNT à la page entière, en tenant compte des rotations.
+
+![alt text](layout/resources/transformation.png)
+
+par ici : [layout](layout/LISEZMOI.md)
