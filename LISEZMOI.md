@@ -5,7 +5,8 @@
 [Les macros de projet](#les-macros-de-projet-pour-une-barre-doutils-dédiée-au-projet)\
 [Courbes de Bezier - expression](#fonction-expressions-styles-pour-construire-des-courbes-de-bezier)\
 [Profil d'altitude - style](#expressions--style-pour-profil-daltitude)\
-[Traveling](#script-pour-un-travelling)
+[Traveling](#script-pour-un-travelling)\
+[Preparer MNT pour blender](#préparer-un-mnt-pour-blender-bien-ajusté-à-une-mise-en-page)
 
 ## Les macros de projet pour une barre d'outils dédiée au projet
 
@@ -38,7 +39,7 @@ Les détails ici : [Travelling](travelling/LISEZMOI.md)
 
 ![ex](travelling/plantorel.gif)
 
-## Préparer un MNT pour Blender, bien ajusté sur une mise en page
+## Préparer un MNT pour Blender, bien ajusté à une mise en page
 
 Ou comment découper, pivoter un raster selon l'emprise d'une mise en page, extrapolant l'étendue du MNT à la page entière, en tenant compte des rotations.
 

@@ -26,7 +26,7 @@ Concerning the use of the QGis/Blender couple, go read the excellent article by 
 
 ## The code
 
-It's all there, a little commented, to plrunay in the Python console : [resources/script.py](resources/script.py)
+It's all there, a little commented, to run in the Python console : [resources/script.py](resources/script.py)
 
 At the end of the script, the bits of code to uncomment.
 
