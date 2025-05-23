@@ -46,3 +46,11 @@ Or how to cut, rotate a raster according to the extent of a print layout, by ext
 ![alt text](layout/resources/transformation.png)
 
 here : [layout](layout/README.md)
+
+## Virtual layers... for planting trees
+
+Virtual layer - recursion - or how to replace the geometry generator with a piece of SQL code.
+
+![alt text](forest/resources/forest.gif)
+
+a little more here : [forest](forest/README.md)

@@ -46,3 +46,11 @@ Ou comment découper, pivoter un raster selon l'emprise d'une mise en page, extr
 ![alt text](layout/resources/transformation.png)
 
 par ici : [layout](layout/LISEZMOI.md)
+
+## Les couches virtuelles... pour planter des arbres
+
+Couche virtuelle - récursivité - ou comment remplacer le générateur de géométrie par un bout de code SQL.
+
+![alt text](forest/resources/forest.gif)
+
+un peu plus ici : [forest](forest/LISEZMOI.md)
