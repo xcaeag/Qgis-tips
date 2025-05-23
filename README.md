@@ -6,7 +6,7 @@
 [Bezier curves style](#function-expressions-styles-to-construct-bezier-curves)\
 [Altitude profile style](#expressions--style-for-altitude-profile)\
 [Tracking shot script](#script-for-a-tracking-shot)\
-[Prepare DEM for blender](#prepare-a-dem-for-blender-well-aligned-with-a-print-layout)
+[Prepare DEM for blender](#prepare-a-dem-for-blender-well-aligned-with-a-print-layout)\
 [Virtual layers](#virtual-layers-for-planting-trees)
 
 ## Project Macros for specific toolbar

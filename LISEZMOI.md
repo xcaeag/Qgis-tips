@@ -6,7 +6,7 @@
 [Courbes de Bezier - expression](#fonction-expressions-styles-pour-construire-des-courbes-de-bezier)\
 [Profil d'altitude - style](#expressions--style-pour-profil-daltitude)\
 [Traveling](#script-pour-un-travelling)\
-[Preparer MNT pour blender](#préparer-un-mnt-pour-blender-bien-ajusté-à-une-mise-en-page)
+[Preparer MNT pour blender](#préparer-un-mnt-pour-blender-bien-ajusté-à-une-mise-en-page)\
 [Couches virtuelles](#les-couches-virtuelles-pour-planter-des-arbres)
 
 ## Les macros de projet pour une barre d'outils dédiée au projet
