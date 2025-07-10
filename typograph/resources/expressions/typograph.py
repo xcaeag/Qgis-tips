@@ -51,9 +51,6 @@ def _charloop(lib, layerid, feature):
     CHARLOOP[layerid]["last_id"] = feature.id()
     CHARLOOP[layerid]["index"] = (CHARLOOP[layerid]["index"] + 1) % len(lib)
 
-    # if feature["fid"] == 14956:
-    #    print(lib)
-
     return lib[CHARLOOP[layerid]["index"] : CHARLOOP[layerid]["index"] + 1]
 
 

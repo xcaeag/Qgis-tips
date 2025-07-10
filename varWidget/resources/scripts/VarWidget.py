@@ -183,10 +183,11 @@ conf = {
     "typo_gap": {"type": "int", "min": 100, "max": 10000, "step": 100},
 }
 
-dock_widget = QDockWidget("Variables", iface.mainWindow())
 w = VarWidget(iface, conf)
+dock_widget = QDockWidget("Variables", iface.mainWindow())
 dock_widget.setWidget(w)
 iface.addDockWidget(Qt.RightDockWidgetArea, dock_widget)
+dock_widget.setFloating(True)
 
 """w = VarWidget(iface, conf)
 msgbar = iface.messageBar()
