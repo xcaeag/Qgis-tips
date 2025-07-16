@@ -58,9 +58,11 @@ class VarWidget(QWidget):
     def addColorWidget(self, pk, obj, v):
         """Create a color button widget for color variables."""
         wdgt = QgsColorButton()
-        wdgt.setColor(QColor(v))
+        wdgt.setAllowOpacity(True)
+        c = QColor(v)
+        wdgt.setColor(c)
         wdgt.colorChanged.connect(
-            lambda value, key=pk: self.updateVariable(obj, key, value.name())
+            lambda value, key=pk: self.updateVariable(obj, key, value.name(QColor.HexArgb))
         )
         return wdgt
 
