@@ -1,11 +1,11 @@
 from qgis.utils import qgsfunction
-
-"""Typograph custom expressions for QGIS."""
-
-# memory to keep track of the last used character for each layer
+import random
 
 CHARLOOP = {}
 
+@qgsfunction(args="auto", group="Custom")
+def charloop_reset(feature, parent):
+    CHARLOOP = {}
 
 def _line_direction_we(feature):
     """
@@ -26,7 +26,7 @@ def _line_direction_we(feature):
 @qgsfunction(args="auto", group="Custom")
 def line_direction_we(feature, parent):
     """
-    qgsfunction version of "_line_direction_we".
+    Determine if the line direction is from West to East.
     """
     return _line_direction_we(feature)
 
@@ -51,15 +51,48 @@ def _charloop(lib, layerid, feature):
     CHARLOOP[layerid]["last_id"] = feature.id()
     CHARLOOP[layerid]["index"] = (CHARLOOP[layerid]["index"] + 1) % len(lib)
 
-    return lib[CHARLOOP[layerid]["index"] : CHARLOOP[layerid]["index"] + 1]
+    # if feature["fid"] == 14956:
+    #    print(lib)
 
+    return lib[CHARLOOP[layerid]["index"]]
+
+
+@qgsfunction(args="auto", group="Custom")
+def charloop_randomize(lib, layerid, feature, parent):
+    """
+    Loop through a list of characters for a given layer and feature.
+    This function maintains a state for each layer to ensure that characters are cycled in a consistent manner based on the feature ID.
+    :param lib: List of characters to loop through.
+    :param layerid: Unique identifier for the layer.
+    """
+    global CHARLOOP
+
+    if not (layerid in CHARLOOP):
+        CHARLOOP[layerid] = {"last_id": -1, "begin":{}, "index":{}}
+
+    if not feature.id() in CHARLOOP[layerid]["begin"]:
+        CHARLOOP[layerid]["begin"][feature.id()] = random.randint(0, len(lib)-1)
+        CHARLOOP[layerid]["index"][feature.id()] = CHARLOOP[layerid]["begin"][feature.id()]
+
+    if CHARLOOP[layerid]["last_id"] != feature.id():
+        CHARLOOP[layerid]["index"][feature.id()] = CHARLOOP[layerid]["begin"][feature.id()]
+    else:
+        CHARLOOP[layerid]["index"][feature.id()] = (CHARLOOP[layerid]["index"][feature.id()] + 1) % len(lib)
+
+    CHARLOOP[layerid]["last_id"] = feature.id()
+
+    if feature.id() == 1:
+        print(lib[CHARLOOP[layerid]["index"][feature.id()]])
+        
+    return lib[CHARLOOP[layerid]["index"][feature.id()]]
 
 @qgsfunction(args="auto", group="Custom")
 def charloop(lib, layerid, feature, parent):
     """
-    qgsfunction version of "charloop".
-
-    To use in 'character' symbol field (QGis expression).
+    Loop through a list of characters for a given layer and feature.
+    This function maintains a state for each layer to ensure that characters are cycled in a consistent manner based on the feature ID.
+    :param lib: List of characters to loop through.
+    :param layerid: Unique identifier for the layer.
     """
     return _charloop(lib, layerid, feature)
 
@@ -75,16 +108,14 @@ def animated_charloop(
 ):
     """
     Loop through a list of characters for a given layer and feature, with animation based on frame number.
-
-    To use in 'character' symbol field (QGis expression).
     """
     pos = int((frame_number / total_frame_count) * len(lib))
 
     if _line_direction_we(feature):
-        # west-east direction : rotate right
+        # west-est direction : rotate right
         newlib = lib[-pos:] + lib[:-pos]
     else:
-        # east-west direction : rotate left
+        # est-west direction : rotate left
         newlib = lib[pos:] + lib[:pos]
 
     return _charloop(newlib, layerid, feature)
@@ -100,9 +131,7 @@ def charloop_shift(
     parent,
 ):
     """
-    Calculate the shift for characters in a loop based on the frame number and total frame count.
-
-    To use in 'offset along line' field (marker line symbol), in QGis expression. 
+    Loop through a list of characters for a given layer and feature, with animation based on frame number.
     """
     pos = (frame_number / total_frame_count) * len(lib)
     shift = pos - int(pos)
