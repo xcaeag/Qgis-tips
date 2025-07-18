@@ -1,9 +1,22 @@
+"""
+Help script for displaying and editing project and layers variables.
+
+This script creates a widget that allows users to view and modify variables
+"""
+
 from qgis.core import QgsProject, QgsExpressionContextUtils, QgsMapLayer
 from qgis.gui import QgsDoubleSpinBox, QgsSpinBox, QgsColorButton
 
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtGui import QColor
-from qgis.PyQt.QtWidgets import QLabel, QWidget, QGridLayout, QLineEdit, QDockWidget
+from qgis.PyQt.QtWidgets import (
+    QLabel,
+    QWidget,
+    QGridLayout,
+    QLineEdit,
+    QDockWidget,
+    QSizePolicy,
+)
 
 
 class VarWidget(QWidget):
@@ -55,15 +68,11 @@ class VarWidget(QWidget):
         )
         return wdgt
 
-    def addColorWidget(self, pk, obj, v):
+    def addColorWidget(self, v):
         """Create a color button widget for color variables."""
         wdgt = QgsColorButton()
         wdgt.setAllowOpacity(True)
-        c = QColor(v)
-        wdgt.setColor(c)
-        wdgt.colorChanged.connect(
-            lambda value, key=pk: self.updateVariable(obj, key, value.name(QColor.HexArgb))
-        )
+        wdgt.setColor(QColor(v))
         return wdgt
 
     def addLineEditWidget(self, pk, obj, v):
@@ -78,7 +87,35 @@ class VarWidget(QWidget):
         )
         return wdgt
 
-    def addWidgets(self, conf, obj, scope, y):
+    def addWidget(self, wdgt, label, x, y):
+        """Add a widget to the variable bar layout."""
+
+        # Create a label for the widget
+        label = QLabel(label)
+        label.setAlignment(Qt.AlignRight)
+        label.setBuddy(wdgt)
+        self._varBarLayout.addWidget(label, y, x)
+        self._varBarLayout.addWidget(wdgt, y, x + 1)
+
+    def addProjectWidgets(self):
+        """Add widgets for project-specific data
+
+        for now : background color.
+        todo : project colors
+        """
+        label = QLabel("Project")
+        label.setAlignment(Qt.AlignLeft)
+        self._varBarLayout.addWidget(label, self.y, 0)
+
+        v = QgsProject.instance().backgroundColor().name(QColor.HexArgb)
+        wdgt = self.addColorWidget(v)
+        wdgt.colorChanged.connect(
+            lambda value: QgsProject.instance().setBackgroundColor(value)
+        )
+        self.addWidget(wdgt, "Background Color", 1, self.y)
+        self.y = self.y + 1
+
+    def addVarWidgets(self, conf, obj, scope):
         """Add widgets for the variables of the given object (project or layer)."""
         variables = scope.filteredVariableNames()
         x = 0
@@ -91,8 +128,8 @@ class VarWidget(QWidget):
             varExists = True
 
         if not varExists:
-            return y
-        
+            return
+
         if isinstance(obj, QgsProject):
             title = "Project variables"
         elif isinstance(obj, QgsMapLayer):
@@ -100,7 +137,7 @@ class VarWidget(QWidget):
 
         label = QLabel(title)
         label.setAlignment(Qt.AlignLeft)
-        self._varBarLayout.addWidget(label, y, x)
+        self._varBarLayout.addWidget(label, self.y, x)
         x = x + 1
 
         for pk in variables:
@@ -124,7 +161,12 @@ class VarWidget(QWidget):
                         step=variable["step"],
                     )
                 elif variable["type"] == "color":
-                    wdgt = self.addColorWidget(pk, obj, v)
+                    wdgt = self.addColorWidget(v)
+                    wdgt.colorChanged.connect(
+                        lambda value, key=pk: self.updateVariable(
+                            obj, key, value.name(QColor.HexArgb)
+                        )
+                    )
                 else:
                     wdgt = self.addLineEditWidget(pk, obj, v)
             else:
@@ -135,26 +177,23 @@ class VarWidget(QWidget):
                 elif "float" in pk.lower():
                     wdgt = self.addDoubleWidget(pk, obj, v)
                 elif "color" in pk.lower():
-                    wdgt = self.addColorWidget(pk, obj, v)
+                    wdgt = self.addColorWidget(v)
+                    wdgt.colorChanged.connect(
+                        lambda value, key=pk: self.updateVariable(
+                            obj, key, value.name(QColor.HexArgb)
+                        )
+                    )
                 else:
                     wdgt = self.addLineEditWidget(pk, obj, v)
 
             if wdgt is not None:
-                """Label for widget"""
-                label = QLabel(pk)
-                label.setAlignment(Qt.AlignRight)
-                label.setBuddy(wdgt)
-
-                self._varBarLayout.addWidget(label, y, x)
-                x = x + 1
-                self._varBarLayout.addWidget(wdgt, y, x)
-                x = x + 1
-
+                self.addWidget(wdgt, pk, x, self.y)
+                x = x + 2
                 if x > 5:
                     x = 1
-                    y = y + 1
+                    self.y = self.y + 1
 
-        return y
+        self.y = self.y + 1
 
     def __init__(self, iface, conf, parent=None):
         """Initialize the VarWidget with the given interface and configuration."""
@@ -164,22 +203,25 @@ class VarWidget(QWidget):
         self._varBarLayout = QGridLayout()  # QHBoxLayout()
 
         """ Add widgets for the project variables. """
-        y = 0
+        self.y = 0
+
+        self.addProjectWidgets()
+
         projectScope = QgsExpressionContextUtils.projectScope(QgsProject.instance())
-        y = self.addWidgets(conf, QgsProject.instance(), projectScope, y)
-        y = y + 1
+        self.addVarWidgets(conf, QgsProject.instance(), projectScope)
 
         """ Add widgets for each checked layer variable in the project. """
         root = QgsProject.instance().layerTreeRoot()
         layers = root.checkedLayers()
         for _layer in layers:
             layerScope = QgsExpressionContextUtils.layerScope(_layer)
-            y = self.addWidgets(conf, _layer, layerScope, y)
-            y = y + 1
+            self.addVarWidgets(conf, _layer, layerScope)
 
         self.setLayout(self._varBarLayout)
 
 
+"""Adjust types and steps for some variables in the configuration dictionary.
+"""
 conf = {
     "typo_size": {"type": "int", "min": 100, "max": 10000, "step": 100},
     "typo_gap": {"type": "int", "min": 100, "max": 10000, "step": 100},
@@ -188,10 +230,6 @@ conf = {
 w = VarWidget(iface, conf)
 dock_widget = QDockWidget("Variables", iface.mainWindow())
 dock_widget.setWidget(w)
-iface.addDockWidget(Qt.RightDockWidgetArea, dock_widget)
 dock_widget.setFloating(True)
-
-"""w = VarWidget(iface, conf)
-msgbar = iface.messageBar()
-msgbar.pushWidget(w)
-"""
+dock_widget.setSizePolicy(QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum))
+iface.addDockWidget(Qt.NoDockWidgetArea, dock_widget)
