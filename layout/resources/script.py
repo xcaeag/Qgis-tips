@@ -381,7 +381,7 @@ def rastToUNIT16(rast):
             "RTYPE": 2,  # uint16
         },
     )
-    return QgsRasterLayer(r["OUTPUT"], "embossed unit16")
+    return QgsRasterLayer(r["OUTPUT"], "embossed uint16")
 
 
 """
