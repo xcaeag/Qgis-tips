@@ -7,7 +7,8 @@
 [Altitude profile style](#expressions--style-for-altitude-profile)\
 [Tracking shot script](#script-for-a-tracking-shot)\
 [Prepare DEM for blender](#prepare-a-dem-for-blender-well-aligned-with-a-print-layout)\
-[Virtual layers](#virtual-layers-for-planting-trees)
+[Virtual layers](#virtual-layers-for-planting-trees)\
+[A dock for adjusting variables](#a-dock-for-adjusting-variables)
 
 ## Project Macros for specific toolbar
 

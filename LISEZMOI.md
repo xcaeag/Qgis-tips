@@ -7,7 +7,8 @@
 [Profil d'altitude - style](#expressions--style-pour-profil-daltitude)\
 [Traveling](#script-pour-un-travelling)\
 [Preparer MNT pour blender](#préparer-un-mnt-pour-blender-bien-ajusté-à-une-mise-en-page)\
-[Couches virtuelles](#les-couches-virtuelles-pour-planter-des-arbres)
+[Couches virtuelles](#les-couches-virtuelles-pour-planter-des-arbres)\
+[Dock pour ajuster les variables](#un-dock-pour-ajuster-les-variables)
 
 ## Les macros de projet pour une barre d'outils dédiée au projet
 
