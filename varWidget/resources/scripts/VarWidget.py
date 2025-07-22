@@ -20,15 +20,12 @@ from qgis.PyQt.QtWidgets import (
 
 
 class VarWidget(QWidget):
-    """Widget for displaying and editing project and layers variables.
-    """
+    """Widget for displaying and editing project and layers variables."""
 
     def updateVariable(self, obj, key, stringValue):
         """Update the variable in the project or layer scope."""
         if isinstance(obj, QgsProject):
-            QgsExpressionContextUtils.setProjectVariable(
-                obj, key, stringValue
-            )
+            QgsExpressionContextUtils.setProjectVariable(obj, key, stringValue)
 
         if isinstance(obj, QgsMapLayer):
             QgsExpressionContextUtils.setLayerVariable(obj, key, stringValue)
@@ -81,7 +78,7 @@ class VarWidget(QWidget):
         try:
             wdgt.setText(str(v))
         except ValueError:
-            wdgt.setText('')
+            wdgt.setText("")
         wdgt.textChanged.connect(
             lambda value, key=pk: self.updateVariable(obj, key, value)
         )
@@ -149,8 +146,15 @@ class VarWidget(QWidget):
             if pk in conf.keys():
                 variable = conf[pk]
 
-                if variable["type"] == "int":
-                    wdgt = self.addIntWidget(pk, obj, v, min=variable["min"], max=variable["max"], step=variable["step"])
+                if variable["type"] == "integer":
+                    wdgt = self.addIntWidget(
+                        pk,
+                        obj,
+                        v,
+                        min=variable["min"],
+                        max=variable["max"],
+                        step=variable["step"],
+                    )
                 elif variable["type"] == "double":
                     wdgt = self.addDoubleWidget(
                         pk,
@@ -174,7 +178,7 @@ class VarWidget(QWidget):
                     wdgt = self.addIntWidget(pk, obj, v)
                 elif "double" in pk.lower():
                     wdgt = self.addDoubleWidget(pk, obj, v)
-                elif "float" in pk.lower():
+                elif "real" in pk.lower():
                     wdgt = self.addDoubleWidget(pk, obj, v)
                 elif "color" in pk.lower():
                     wdgt = self.addColorWidget(v)
@@ -221,10 +225,15 @@ class VarWidget(QWidget):
 
 
 """Adjust types and steps for some variables in the configuration dictionary.
+
+types : integer, double, color
+
+Take inspiration from this example
 """
 conf = {
-    "typo_size": {"type": "int", "min": 100, "max": 10000, "step": 100},
-    "typo_gap": {"type": "int", "min": 100, "max": 10000, "step": 100},
+    "typo_size": {"type": "integer", "min": 100, "max": 10000, "step": 100},
+    "typo_gap": {"type": "integer", "min": 100, "max": 10000, "step": 100},
+    "roads": {"type": "color"},
 }
 
 w = VarWidget(iface, conf)

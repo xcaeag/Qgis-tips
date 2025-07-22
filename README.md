@@ -55,3 +55,9 @@ Virtual layer - recursion - or how to replace the geometry generator with a piec
 ![alt text](forest/resources/forest.gif)
 
 a little more here : [forest](forest/README.md)
+
+## A dock for adjusting variables
+
+![alt text](varWidget/demo-480.gif)
+
+Explanations : [Var Widget](varWidget/README.md)

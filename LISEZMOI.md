@@ -55,3 +55,9 @@ Couche virtuelle - récursivité - ou comment remplacer le générateur de géom
 ![alt text](forest/resources/forest.gif)
 
 un peu plus ici : [forest](forest/LISEZMOI.md)
+
+## Un dock pour ajuster les variables
+
+![alt text](varWidget/demo-480.gif)
+
+Explications : [Var Widget](varWidget/LISEZMOI.md)
