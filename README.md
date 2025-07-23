@@ -59,6 +59,6 @@ a little more here : [forest](forest/README.md)
 
 ## A dock for adjusting variables
 
-![alt text](varWidget/demo-480.gif)
+![alt text](varWidget/resources/demo-480.gif)
 
 Explanations : [Var Widget](varWidget/README.md)

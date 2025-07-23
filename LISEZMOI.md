@@ -59,6 +59,6 @@ un peu plus ici : [forest](forest/LISEZMOI.md)
 
 ## Un dock pour ajuster les variables
 
-![alt text](varWidget/demo-480.gif)
+![alt text](varWidget/resources/demo-480.gif)
 
 Explications : [Var Widget](varWidget/LISEZMOI.md)
