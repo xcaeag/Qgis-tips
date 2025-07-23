@@ -13,16 +13,14 @@ Without this configuration, the name of the variable may suffice: if it contains
 In addition to the variables, the background colour (of the project) can be adjusted.
 
 Widget example :\
-![Le widget](dock.png)
+![Le widget](resources/dock.png)
 
 Layer variables example :\
-![variables de projet](variables.png)
+![variables de projet](resources/variables.png)
 
 Demo :\
-![demo](demo.gif)
+![demo](resources/demo.gif)
 
 ## Le script
 
-under /resources
-
-- ['VarWidget.py'](resources/VarWidget.py)
+- ['resources/scripts/VarWidget.py'](resources/scripts/VarWidget.py)

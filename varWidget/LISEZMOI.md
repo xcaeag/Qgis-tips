@@ -13,16 +13,15 @@ Sans cette configuration, le nom de la variable peut suffire : si contient 'colo
 En plus des variables, la couleur de fond (du projet) est ajustable.
 
 Exemple de widget :\
-![Le widget](dock.png)
+![Le widget](resources/dock.png)
 
 Exemple de variables de couche :\
-![variables de projet](variables.png)
+![variables de projet](resources/variables.png)
 
 Démo :\
-![démo](demo.gif)
+![démo](resources/demo.gif)
 
 ## Le script
 
-sous /resources
+- ['resources/scripts/VarWidget.py'](resources/scripts/VarWidget.py)
 
-- ['VarWidget.py'](resources/VarWidget.py)
