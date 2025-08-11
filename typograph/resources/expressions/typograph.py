@@ -3,9 +3,13 @@ import random
 
 CHARLOOP = {}
 
+
 @qgsfunction(args="auto", group="Custom")
-def charloop_reset(feature, parent):
+def charloop_reset(v, feature, parent):
+    global CHARLOOP
     CHARLOOP = {}
+    return v
+
 
 def _line_direction_we(feature):
     """
@@ -25,13 +29,19 @@ def _line_direction_we(feature):
 
 @qgsfunction(args="auto", group="Custom")
 def line_direction_we(feature, parent):
-    """
-    Determine if the line direction is from West to East.
+    """<h1>line_direction_we function</h1>
+        Determine if the line direction is from West to East.<br>
+        <h2>Exemples : </h2>
+            <pre>case
+        when line_direction_we()
+        then ($geometry)
+        else reverse($geometry)
+    end</pre>
     """
     return _line_direction_we(feature)
 
 
-def _charloop(lib, layerid, feature):
+def _charloop(lib, layerid, start_index, feature):
     """
     Loop through a list of characters for a given layer and feature.
     This function maintains a state for each layer to ensure that characters are cycled in a consistent manner based on the feature ID.
@@ -41,60 +51,47 @@ def _charloop(lib, layerid, feature):
     global CHARLOOP
 
     if not (layerid in CHARLOOP):
-        CHARLOOP[layerid] = {"last_id": -1, "index": -1}
+        CHARLOOP[layerid] = {"last_id": -1, "begin": {}, "index": {}}
 
-    # Check if the feature ID has changed since the last call
-    # if the last feature ID is not the same as the current one, reset the index
+    if not feature.id() in CHARLOOP[layerid]["begin"]:
+        CHARLOOP[layerid]["begin"][feature.id()] = start_index
+        CHARLOOP[layerid]["index"][feature.id()] = start_index
+
     if CHARLOOP[layerid]["last_id"] != feature.id():
-        CHARLOOP[layerid]["index"] = -1
+        CHARLOOP[layerid]["index"][feature.id()] = CHARLOOP[layerid]["begin"][
+            feature.id()
+        ]
+    else:
+        CHARLOOP[layerid]["index"][feature.id()] = (
+            CHARLOOP[layerid]["index"][feature.id()] + 1
+        ) % len(lib)
 
     CHARLOOP[layerid]["last_id"] = feature.id()
-    CHARLOOP[layerid]["index"] = (CHARLOOP[layerid]["index"] + 1) % len(lib)
 
-    # if feature["fid"] == 14956:
-    #    print(lib)
-
-    return lib[CHARLOOP[layerid]["index"]]
+    return lib[CHARLOOP[layerid]["index"][feature.id()]]
 
 
 @qgsfunction(args="auto", group="Custom")
-def charloop_randomize(lib, layerid, feature, parent):
+def charloop_random(lib, layerid, feature, parent):
     """
     Loop through a list of characters for a given layer and feature.
     This function maintains a state for each layer to ensure that characters are cycled in a consistent manner based on the feature ID.
     :param lib: List of characters to loop through.
     :param layerid: Unique identifier for the layer.
     """
-    global CHARLOOP
+    return _charloop(lib, layerid, random.randint(0, len(lib) - 1), feature)
 
-    if not (layerid in CHARLOOP):
-        CHARLOOP[layerid] = {"last_id": -1, "begin":{}, "index":{}}
-
-    if not feature.id() in CHARLOOP[layerid]["begin"]:
-        CHARLOOP[layerid]["begin"][feature.id()] = random.randint(0, len(lib)-1)
-        CHARLOOP[layerid]["index"][feature.id()] = CHARLOOP[layerid]["begin"][feature.id()]
-
-    if CHARLOOP[layerid]["last_id"] != feature.id():
-        CHARLOOP[layerid]["index"][feature.id()] = CHARLOOP[layerid]["begin"][feature.id()]
-    else:
-        CHARLOOP[layerid]["index"][feature.id()] = (CHARLOOP[layerid]["index"][feature.id()] + 1) % len(lib)
-
-    CHARLOOP[layerid]["last_id"] = feature.id()
-
-    if feature.id() == 1:
-        print(lib[CHARLOOP[layerid]["index"][feature.id()]])
-        
-    return lib[CHARLOOP[layerid]["index"][feature.id()]]
 
 @qgsfunction(args="auto", group="Custom")
 def charloop(lib, layerid, feature, parent):
+    """<h1>charloop function</h1>
+        Loop through a list of characters for a given layer and feature.<br>
+        <h2>Exemples : </h2>
+        <p>Use it in char expression</p>
+            <pre>charloop('ABCDE', @layerid)
+    </pre>
     """
-    Loop through a list of characters for a given layer and feature.
-    This function maintains a state for each layer to ensure that characters are cycled in a consistent manner based on the feature ID.
-    :param lib: List of characters to loop through.
-    :param layerid: Unique identifier for the layer.
-    """
-    return _charloop(lib, layerid, feature)
+    return _charloop(lib, layerid, 0, feature)
 
 
 @qgsfunction(args="auto", group="Custom")
@@ -109,7 +106,7 @@ def animated_charloop(
     """
     Loop through a list of characters for a given layer and feature, with animation based on frame number.
     """
-    pos = int((frame_number / total_frame_count) * len(lib))
+    pos = int((frame_number / int(total_frame_count)) * len(lib))
 
     if _line_direction_we(feature):
         # west-est direction : rotate right
@@ -118,7 +115,31 @@ def animated_charloop(
         # est-west direction : rotate left
         newlib = lib[pos:] + lib[:pos]
 
-    return _charloop(newlib, layerid, feature)
+    return _charloop(newlib, layerid, 0, feature)
+
+
+@qgsfunction(args="auto", group="Custom")
+def animated_charloop_random(
+    lib,
+    layerid,
+    frame_number,
+    total_frame_count,
+    feature,
+    parent,
+):
+    """
+    Loop through a list of characters for a given layer and feature, with animation based on frame number.
+    """
+    pos = int((frame_number / int(total_frame_count)) * len(lib))
+
+    if _line_direction_we(feature):
+        # west-est direction : rotate right
+        newlib = lib[-pos:] + lib[:-pos]
+    else:
+        # est-west direction : rotate left
+        newlib = lib[pos:] + lib[:pos]
+
+    return _charloop(newlib, layerid, random.randint(0, len(lib) - 1), feature)
 
 
 @qgsfunction(args="auto", group="Custom")
@@ -133,7 +154,7 @@ def charloop_shift(
     """
     Loop through a list of characters for a given layer and feature, with animation based on frame number.
     """
-    pos = (frame_number / total_frame_count) * len(lib)
+    pos = (frame_number / int(total_frame_count)) * len(lib)
     shift = pos - int(pos)
 
     if _line_direction_we(feature):

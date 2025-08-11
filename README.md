@@ -8,7 +8,8 @@
 [Tracking shot script](#script-for-a-tracking-shot)\
 [Prepare DEM for blender](#prepare-a-dem-for-blender-well-aligned-with-a-print-layout)\
 [Virtual layers](#virtual-layers-for-planting-trees)\
-[A dock for adjusting variables](#a-dock-for-adjusting-variables)
+[A dock for adjusting variables](#a-dock-for-adjusting-variables)\
+[Typograph - labelling](#typograph)
 
 ## Project Macros for specific toolbar
 
@@ -62,3 +63,11 @@ a little more here : [forest](forest/README.md)
 ![alt text](varWidget/resources/demo-480.gif)
 
 Explanations : [Var Widget](varWidget/README.md)
+
+## Typograph
+
+Enforce labelling, animate it !
+
+![alt text](typograph/resources/demo2.gif)
+
+Explanations : [Typograph](typograph/README.md)

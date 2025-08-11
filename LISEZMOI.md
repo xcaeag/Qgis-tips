@@ -8,7 +8,8 @@
 [Traveling](#script-pour-un-travelling)\
 [Preparer MNT pour blender](#préparer-un-mnt-pour-blender-bien-ajusté-à-une-mise-en-page)\
 [Couches virtuelles](#les-couches-virtuelles-pour-planter-des-arbres)\
-[Dock pour ajuster les variables](#un-dock-pour-ajuster-les-variables)
+[Dock pour ajuster les variables](#un-dock-pour-ajuster-les-variables)\
+[Typograph - étiquetage](#typograph)
 
 ## Les macros de projet pour une barre d'outils dédiée au projet
 
@@ -62,3 +63,11 @@ un peu plus ici : [forest](forest/LISEZMOI.md)
 ![alt text](varWidget/resources/demo-480.gif)
 
 Explications : [Var Widget](varWidget/LISEZMOI.md)
+
+## Typograph
+
+Forcer l'étiquetage, l'animer !
+
+![alt text](typograph/resources/demo2.gif)
+
+Explications : [Typograph](typograph/LISEZMOI.md)
