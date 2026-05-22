@@ -4,17 +4,17 @@
 
 Ceci n'est pas un plugin !
 
-![Démo](retouch.gif)
+![Démo](./retouch.gif)
 
 ## Usage
 
-Copier script.py + svg dans un dossier de votre choix. 
+Copier script.py + svg (pictos des boutons) dans un dossier de votre choix. 
 
-Ouvrir, lancer dans la console Python de QGis avec une couche Raster sélectionnée, une barre d'outil apparaît et vous permet de dessiner sur le raster (élever, creuser, flouter, copier etc...). 
+Ouvrir le script, l'exécuter dans la console Python de QGis avec une couche Raster sélectionnée. Une barre d'outil apparaît et vous permet de dessiner sur le raster (élever, creuser, flouter, copier etc...). 
 
 Plutôt adapté au MNT, il travaille en modifiant la valeur des pixels d'un raster mono-bande.
 
-Ne fonctionne que sur les couches locales, TIFF, ASC.
+Ne fonctionne que sur les fichiers locaux (et non WMS etc...), de type TIFF, ASC.
 
 Attention : la source est altérée : pensez à travailler sur une copie de vos originaux.
 
@@ -28,7 +28,11 @@ Le pinceau : circulaire aux bords floutés. Sa taille, sa force, son floutage so
 
 ![alt text](resources/rasterRetouchMode4.svg) : Copie depuis un deuxième raster
 
+- sélectionnez au préalable le raster source
+
 ![alt text](resources/rasterRetouchMode5.svg) : Copie au sein du même raster
+
+- Ctrl+Click pour définir l'origine de la copie
 
 ![alt text](resources/rasterRetouchMode6.svg) : Aplatit le relief
 
@@ -37,6 +41,10 @@ Le pinceau : circulaire aux bords floutés. Sa taille, sa force, son floutage so
 ![alt text](resources/rasterRetouchMode7.svg) : Traîne
 
 ![alt text](resources/close.svg) : Ferme la barre d'outils
+
+Problème connu :
+
+Ajuster les caractéristiques du pinceau ne fonctionne pas parfois (l'action de zoom prend le dessus)... déplacez un peu la carte (click molette) corrige le pb.
 
 ## Les fichiers
 

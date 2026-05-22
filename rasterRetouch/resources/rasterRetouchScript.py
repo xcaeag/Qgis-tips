@@ -112,7 +112,6 @@ class BrushTool(QgsMapTool):
 
     @classmethod
     def getInstance(cls, *args, **kwargs):
-        """Return the singleton instance, creating it if necessary."""
         if cls._instance is None:
             cls._instance = cls(*args, **kwargs)
 
@@ -189,12 +188,6 @@ class BrushTool(QgsMapTool):
             "Trainer",
             iface.mainWindow(),
         )
-
-        """self.actions[BrushTool.MODE_ERODER] = QAction(
-            QIcon(str(self.DIR / "rasterRetouchMode9.svg")),
-            "Eroder",
-            iface.mainWindow(),
-        )"""
 
         self.toolbar = iface.addToolBar("Retouche raster")
 
@@ -305,13 +298,10 @@ class BrushTool(QgsMapTool):
         zon = self.npa[rymin:rymax, rxmin:rxmax]
 
         delta = 100
-        # print(delta)
         newBrush = abrush * self.brushAlpha
         if self.mode == BrushTool.MODE_MONTER:
-            # zon2 = self.npa2[rymin:rymax, rxmin:rxmax]
             self.npa[rymin:rymax, rxmin:rxmax] = zon + delta * newBrush
         elif self.mode == BrushTool.MODE_DESCENDRE:
-            # zon2 = self.npa2[rymin:rymax, rxmin:rxmax]
             self.npa[rymin:rymax, rxmin:rxmax] = zon - delta * newBrush
         elif self.mode == BrushTool.MODE_APLATIR:
             average = np.copy(zon)
@@ -325,8 +315,6 @@ class BrushTool(QgsMapTool):
             if self.firstZone is None:
                 self.firstZone = np.copy(zon)
             self.npa[rymin:rymax, rxmin:rxmax] = zon + (self.firstZone - zon) * newBrush
-        # elif self.mode == BrushTool.MODE_ERODER:
-        #    self.npa[rymin:rymax, rxmin:rxmax] = zon + (0.9 * zon - zon) * newBrush * 0.1
         elif self.mode == BrushTool.MODE_FLOUTER:
             znull = zon
             zon[zon > 99999] = 0
@@ -376,9 +364,6 @@ class BrushTool(QgsMapTool):
         if self.mode is None:
             return
 
-        # if self.mode in (BrushTool.MODE_MONTER, BrushTool.MODE_DESCENDRE):
-        #    self.npa2 = np.copy(self.npa)
-
         if self.mode == BrushTool.MODE_COPIE2 and self.ctrlKey:
             self.fromPointXY = self._canvas.getCoordinateTransform().toMapCoordinates(
                 event.pos().x(), event.pos().y()
@@ -417,7 +402,6 @@ class BrushTool(QgsMapTool):
         try:
             self.draw()
         except Exception:
-            raise
             pass
 
     def canvasMoveEvent(self, event):
@@ -459,38 +443,34 @@ class BrushTool(QgsMapTool):
         self.rlayer.triggerRepaint()
 
     def wheelEvent(self, e):
-        if not self.drawing:
+        if not self.drawing and (self.ctrlKey or self.shiftKey):
+            d = e.angleDelta().y()
+            if d > 0 and not self.shiftKey and self.ctrlKey:
+                self.brushR = self.brushR + self.brushR / 20
+            elif d < 0 and not self.shiftKey and self.ctrlKey:
+                self.brushR = self.brushR - self.brushR / 20
+            elif d > 0 and self.shiftKey and not self.ctrlKey:
+                self.brushBlurSize = min(self.brushBlurSize * 1.1, 1)
+            elif d < 0 and self.shiftKey and not self.ctrlKey:
+                self.brushBlurSize = self.brushBlurSize * 0.9
+            elif d > 0 and self.shiftKey and self.ctrlKey:
+                self.brushAlpha = min(self.brushAlpha + 0.01, 1)
+                self.setLabel("{:0d}".format(round(100 * self.brushAlpha)))
+            elif d < 0 and self.shiftKey and self.ctrlKey:
+                self.brushAlpha = max(self.brushAlpha - 0.01, 0)
+                self.setLabel("{:0d}".format(round(100 * self.brushAlpha)))
+
             self.buildRubberBand()
-
-            if not self.ctrlKey and not self.shiftKey:
-                pass
-            else:
-                d = e.angleDelta().y()
-                if d > 0 and not self.shiftKey and self.ctrlKey:
-                    self.brushR = self.brushR + self.brushR / 20
-                elif d < 0 and not self.shiftKey and self.ctrlKey:
-                    self.brushR = self.brushR - self.brushR / 20
-                elif d > 0 and self.shiftKey and not self.ctrlKey:
-                    self.brushBlurSize = min(self.brushBlurSize * 1.1, 1)
-                elif d < 0 and self.shiftKey and not self.ctrlKey:
-                    self.brushBlurSize = self.brushBlurSize * 0.9
-                elif d > 0 and self.shiftKey and self.ctrlKey:
-                    self.brushAlpha = min(self.brushAlpha + 0.01, 1)
-                    self.setLabel("{:0d}".format(round(100 * self.brushAlpha)))
-                elif d < 0 and self.shiftKey and self.ctrlKey:
-                    self.brushAlpha = max(self.brushAlpha - 0.01, 0)
-                    self.setLabel("{:0d}".format(round(100 * self.brushAlpha)))
-
-                e.accept()
+            e.accept()
 
     def keyPressEvent(self, e):
         if self.mode is None:
             return
 
         self.key = e.modifiers()
-        if e.modifiers() & Qt.ShiftModifier:
+        if e.modifiers() & Qt.KeyboardModifier.ShiftModifier:
             self.shiftKey = True
-        if e.modifiers() & Qt.ControlModifier:
+        if e.modifiers() & Qt.KeyboardModifier.ControlModifier:
             self.ctrlKey = True
 
     def keyReleaseEvent(self, e):
@@ -498,8 +478,8 @@ class BrushTool(QgsMapTool):
             return
 
         self.key = e.modifiers()
-        self.shiftKey = e.modifiers() & Qt.ShiftModifier
-        self.ctrlKey = e.modifiers() & Qt.ControlModifier
+        self.shiftKey = e.modifiers() & Qt.KeyboardModifier.ShiftModifier
+        self.ctrlKey = e.modifiers() & Qt.KeyboardModifier.ControlModifier
         self.setLabel(None)
 
     def activate(self):

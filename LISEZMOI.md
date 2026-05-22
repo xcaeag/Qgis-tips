@@ -2,14 +2,28 @@
 
 [english version](README.md) - [cette page sur github.io](https://xcaeag.github.io/Qgis-tips/)
 
+[Retouche raster MNT](#retouche-raster-mnt)\
+[Typograph - étiquetage](#typograph)\
 [Les macros de projet](#les-macros-de-projet-pour-une-barre-doutils-dédiée-au-projet)\
 [Courbes de Bezier - expression](#fonction-expressions-styles-pour-construire-des-courbes-de-bezier)\
 [Profil d'altitude - style](#expressions--style-pour-profil-daltitude)\
 [Traveling](#script-pour-un-travelling)\
-[Preparer MNT pour blender](#préparer-un-mnt-pour-blender-bien-ajusté-à-une-mise-en-page)\
 [Couches virtuelles](#les-couches-virtuelles-pour-planter-des-arbres)\
-[Dock pour ajuster les variables](#un-dock-pour-ajuster-les-variables)\
-[Typograph - étiquetage](#typograph)
+[Dock pour ajuster les variables](#un-dock-pour-ajuster-les-variables)
+
+## Retouche raster MNT
+
+[Une barre d'outil](rasterRetouch/LISEZMOI.md) pour retoucher un MNT, au pinceau.
+
+![alt text](rasterRetouch/retouch.gif)
+
+## Typograph
+
+Forcer l'étiquetage, l'animer !
+
+![alt text](typograph/resources/demo2.gif)
+
+Explications : [Typograph](typograph/LISEZMOI.md)
 
 ## Les macros de projet pour une barre d'outils dédiée au projet
 
@@ -42,14 +56,6 @@ Les détails ici : [Travelling](travelling/LISEZMOI.md)
 
 ![ex](travelling/plantorel.gif)
 
-## Préparer un MNT pour Blender, bien ajusté à une mise en page
-
-Ou comment découper, pivoter un raster selon l'emprise d'une mise en page, extrapolant l'étendue du MNT à la page entière, en tenant compte des rotations.
-
-![alt text](layout/resources/transformation.png)
-
-par ici : [layout](layout/LISEZMOI.md)
-
 ## Les couches virtuelles... pour planter des arbres
 
 Couche virtuelle - récursivité - ou comment remplacer le générateur de géométrie par un bout de code SQL.
@@ -64,10 +70,3 @@ un peu plus ici : [forest](forest/LISEZMOI.md)
 
 Explications : [Var Widget](varWidget/LISEZMOI.md)
 
-## Typograph
-
-Forcer l'étiquetage, l'animer !
-
-![alt text](typograph/resources/demo2.gif)
-
-Explications : [Typograph](typograph/LISEZMOI.md)

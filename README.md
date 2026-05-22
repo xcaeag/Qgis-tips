@@ -2,14 +2,27 @@
 
 [french version](LISEZMOI.md) - [this page on github.io](https://xcaeag.github.io/Qgis-tips/)
 
+[Typograph - labelling](#typograph)\
 [Project macros](#project-macros-for-specific-toolbar)\
 [Bezier curves style](#function-expressions-styles-to-construct-bezier-curves)\
 [Altitude profile style](#expressions--style-for-altitude-profile)\
 [Tracking shot script](#script-for-a-tracking-shot)\
-[Prepare DEM for blender](#prepare-a-dem-for-blender-well-aligned-with-a-print-layout)\
 [Virtual layers](#virtual-layers-for-planting-trees)\
-[A dock for adjusting variables](#a-dock-for-adjusting-variables)\
-[Typograph - labelling](#typograph)
+[A dock for adjusting variables](#a-dock-for-adjusting-variables)
+
+## DEM retouch
+
+[A toolbar](rasterRetouch/README.md) to edit a DEM using the brush tool.
+
+![alt text](rasterRetouch/retouch.gif)
+
+## Typograph
+
+Enforce labelling, animate it !
+
+![alt text](typograph/resources/demo2.gif)
+
+Explanations : [Typograph](typograph/README.md)
 
 ## Project Macros for specific toolbar
 
@@ -42,14 +55,6 @@ Details here: [Travelling](travelling/README.md)
 
 ![alt text](travelling/plantorel.gif)
 
-## Prepare a DEM for Blender, well aligned with a print layout
-
-Or how to cut, rotate a raster according to the extent of a print layout, by extrapolating the extent of the map to the entire page, taking into account rotations.
-
-![alt text](layout/resources/transformation.png)
-
-here : [layout](layout/README.md)
-
 ## Virtual layers... for planting trees
 
 Virtual layer - recursion - or how to replace the geometry generator with a piece of SQL code.
@@ -64,10 +69,3 @@ a little more here : [forest](forest/README.md)
 
 Explanations : [Var Widget](varWidget/README.md)
 
-## Typograph
-
-Enforce labelling, animate it !
-
-![alt text](typograph/resources/demo2.gif)
-
-Explanations : [Typograph](typograph/README.md)
