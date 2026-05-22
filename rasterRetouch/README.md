@@ -8,6 +8,8 @@ This is not a plugin!
  
 ## Usage
 
+Requires scipy library.
+
 Copy script.py and the SVG files (button icons) to a folder of your choice. 
  
 Open the script and run it in the QGIS Python console with a raster layer selected. A toolbar will appear, allowing you to manipulate the raster (raise, lower, blur, copy, etc.). 

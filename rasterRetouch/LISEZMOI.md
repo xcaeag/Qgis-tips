@@ -8,6 +8,8 @@ Ceci n'est pas un plugin !
 
 ## Usage
 
+Prérequis : lib scipy
+
 Copier script.py + svg (pictos des boutons) dans un dossier de votre choix. 
 
 Ouvrir le script, l'exécuter dans la console Python de QGis avec une couche Raster sélectionnée. Une barre d'outil apparaît et vous permet de dessiner sur le raster (élever, creuser, flouter, copier etc...). 
