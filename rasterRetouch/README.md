@@ -39,7 +39,7 @@ The brush: circular with blurred edges. Its size, opacity and blur can be adjust
  
 ![alt text](resources/rasterRetouchMode8.svg) : Enhances the relief
  
-![alt text](resources/rasterRetouchMode7.svg) : 
+![alt text](resources/rasterRetouchMode7.svg) : drags
  
 ![alt text](resources/close.svg) : Close the toolbar
  
