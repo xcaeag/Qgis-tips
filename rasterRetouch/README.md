@@ -1,13 +1,12 @@
-
- ## A toolbar for editing digital elevation models (raster) using a brush
+## A toolbar for editing digital elevation models (raster) using a brush
  
 [french version](LISEZMOI.md) - [top](../README.md)
  
- This is not a plugin!
+This is not a plugin!
 
- ![Demo](./retouch.gif)
+![Demo](./retouch.gif)
  
- ## Usage
+## Usage
 
 Copy script.py and the SVG files (button icons) to a folder of your choice. 
  
@@ -52,4 +51,3 @@ Adjusting the brush settings sometimes doesn't work (the zoom function takes pre
  
 - repo : [https://github.com/xcaeag/Qgis-tips](https://github.com/xcaeag/Qgis-tips)
 - script : [resources/rasterRetouchScript.py](resources/rasterRetouchScript.py)
- 
