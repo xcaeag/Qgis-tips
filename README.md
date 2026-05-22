@@ -2,6 +2,7 @@
 
 [french version](LISEZMOI.md) - [this page on github.io](https://xcaeag.github.io/Qgis-tips/)
 
+[DEM raster retouch](#dem-raster-retouch)\
 [Typograph - labelling](#typograph)\
 [Project macros](#project-macros-for-specific-toolbar)\
 [Bezier curves style](#function-expressions-styles-to-construct-bezier-curves)\
@@ -10,7 +11,7 @@
 [Virtual layers](#virtual-layers-for-planting-trees)\
 [A dock for adjusting variables](#a-dock-for-adjusting-variables)
 
-## DEM retouch
+## DEM raster retouch
 
 [A toolbar](rasterRetouch/README.md) to edit a DEM using the brush tool.
 
